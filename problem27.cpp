@@ -13,6 +13,6 @@ int main(void)
 		printf("%.2f",(a-110)*0.55+55);
 		return 0;
 	}
-	printf("%d",(a-210)*0.7+110);
+	printf("%.2f",(a-210)*0.7+110);
 	return 0;
 }
