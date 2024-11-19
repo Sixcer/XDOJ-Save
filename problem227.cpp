@@ -1,21 +1,20 @@
 #include<stdio.h>
-int fun(int);
+void fun(char*);
 int main(void)
 {
-	int a=0,j=0;
-	char i[50]={0};
-	scanf("%s",i);
-	for(a=0;i[a]!=0;++a)
+	char words[50]={0};
+	gets(words);
+	fun(words);
+}
+void fun(char *a)
+{
+	int i,j=0;
+	for(i=0;a[i]!=0;i++)
 	{
-	if(fun(i[a])==1)
-	++j;
+		if(a[i]>='A'&&a[i]<='Z'||a[i]>='a'&&a[i]<='z')
+		{
+			++j;
+		}
 	}
 	printf("%d",j);
-}
-int fun(int i)
-{
-	if(i>='A'&&i<='z')
-	return 1;
-	else
-	return 0;
 }
