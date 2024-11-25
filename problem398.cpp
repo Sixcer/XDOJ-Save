@@ -12,21 +12,42 @@ int main()
 	puts(ps);
 	return 0;
 }
+
 char *compress(char *src)
 {
-	
-	int i,k=0;
-	char j[100]={0};
-	char a[100];
-	&a=src;
-	for(i=0;a[i]!=0;++i)
+	int i,j=0,k=0;
+	char *ps=(char *)malloc(100*sizeof(char));
+	for(i=0;i<strlen(src);++i)
 	{
-		if(a[i]!=a[i+1])
+		if(src[i]!=src[i+1])
 		{
-			j[k]=a[i];
 			++k;
-			j[k]=0x30+i+1;
+			ps[j]=src[i];
+			++j;
+			if(k>2&&k<10)
+			{
+				ps[j]=k+48;
+				++j;
+			}
+			else if(k>9)
+			{
+				ps[j+1]=k%10+48;
+				k/=10;
+				ps[j]=k%10+48;
+				j+=2;
+			}
+			else if(k==2)
+			{
+				ps[j]=src[i];
+				++j;
+			}
+			k=0;
+		}
+		if(src[i]==src[i+1])
+		{
+			++k;
 		}
 	}
-	return *j;
+	ps[j]='\0';
+	return ps;
 }
