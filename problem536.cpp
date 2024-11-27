@@ -39,10 +39,7 @@ void paint(int n,int (*l)[4],int *result)
 			}
 		}
 	}
-	for(i=0;i<300;++i)
-	{
-		result[i]=0;
-	}
+	result[0]=0;
 	int x,s=0;
 	for(i=n;i>=0;--i)
 	{
