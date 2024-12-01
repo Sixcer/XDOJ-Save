@@ -1,29 +1,36 @@
 #include<stdio.h>
-int f(char n){if(n>='A'&&n<='z')return n>'Z'?n:n+'a'-'A';else return n;}
+int fun(char a)
+{
+	if(a>='a'&&a<='z'||a>='A'&&a<='Z')
+		return a>'Z'?a:a+'a'-'A';
+	else
+		return a;
+}
 int main(void)
 {
 	int n,m;
 	scanf("%d %d",&n,&m);
-	char test[n];
-	scanf("%s",test);
-	for(int i=0;i<n-1;++i)
+	char text[n+1];
+	getchar();
+	gets(text);
+	int i,j,k;
+	for(i=0;i<n-1;++i)
 	{
-		for(int j=0;j<n-i-1;++j)
+		for(j=0;j<n-i-1;++j)
 		{
-			if(f(test[j])>f(test[j+1]))
+			if(fun(text[j])>fun(text[j+1]))
 			{
-				int delta=test[j];
-				test[j]=test[j+1];
-				test[j+1]=delta;
+				k=text[j];
+				text[j]=text[j+1];
+				text[j+1]=k;
 			}
 		}
 	}
-	int delta=test[0];
-	for(int i=0;i<m;++i)
+	k=text[0];
+	for(i=0;i<m;++i)
 	{
-		test[i]=test[i+1];
+		text[i]=text[i+1];
 	}
-	test[m]=delta;
-	printf("%s",test);
-	return 0;
+	text[m]=k;
+	puts(text);
 }
